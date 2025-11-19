@@ -34,10 +34,12 @@ btnIniciar.addEventListener('click', async () => {
 })
 btnReiniciar.addEventListener('click', async () => {
     const resposta = await fetch('jogar.php')
-    await resposta.json()
-    form.classList.remove('esconder')
-    btnReiniciar.classList.add('esconder')
-    mensagem.innerText = ''
+    const dados = await resposta.json()
+    if(dados.status){
+        form.classList.remove('esconder')
+        btnReiniciar.classList.add('esconder')
+        mensagem.innerText = ''
+    }
 })
 btnZerar.addEventListener('click', async () => {
     const resposta = await fetch('zerar.php')
